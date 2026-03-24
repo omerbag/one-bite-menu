@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Bite - Tam Menü</title>
+    <style>
+        :root {
+            --primary: #c0392b; /* Restoranın sıcak tonları */
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+        }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg); color: #333; line-height: 1.6; }
+        
+        /* Hero */
+        .hero { height: 60vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+        
+        /* Sticky Nav */
+        .category-nav { position: sticky; top: 0; background: white; display: flex; overflow-x: auto; padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; gap: 10px; scrollbar-width: none; }
+        .category-nav::-webkit-scrollbar { display: none; }
+        .nav-btn { background: #eee; border: none; padding: 10px 20px; border-radius: 25px; white-space: nowrap; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .nav-btn.active { background: var(--primary); color: white; }
+
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; padding-bottom: 100px; }
+        .menu-section { display: none; }
+        .menu-section.active { display: block; animation: fadeIn 0.4s; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .section-title { border-bottom: 2px solid var(--primary); display: inline-block; margin-bottom: 20px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+        
+        .product-card { background: var(--card-bg); padding: 18px; margin-bottom: 12px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .product-info { flex: 1; padding-right: 15px; }
+        .product-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #222; }
+        .product-info p { margin: 0; color: #777; font-size: 0.85rem; }
+        .price { font-weight: 800; color: #222; font-size: 1.1rem; }
+
+        .extra-note { font-style: italic; font-size: 0.8rem; color: #999; margin-top: 5px; }
+        footer { position: fixed; bottom: 0; width: 100%; background: #222; color: white; text-align: center; padding: 15px 0; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1 style="font-size: 3.5rem; margin: 0;">ONE BITE</h1>
+        <p>Günün her anında taze lezzetler</p>
+    </section>
+
+    <div class="category-nav">
+        <button class="nav-btn active" onclick="showCat('sandvic', this)">🥪 Sandviçler</button>
+        <button class="nav-btn" onclick="showCat('salata', this)">🥗 Salatalar</button>
+        <button class="nav-btn" onclick="showCat('kahve-sicak', this)">☕ Sıcak Kahveler</button>
+        <button class="nav-btn" onclick="showCat('icecekler', this)">🥤 İçecekler & Tatlı</button>
+    </div>
+
+    <div class="container">
+        
+        <div id="sandvic" class="menu-section active">
+            <h2 class="section-title">Sandviçler</h2>
+            <div class="product-card">
+                <div class="product-info"><h3>Smash Burger</h3><p>Burger ekmeği, 2 adet 55gr köfte, cheddar peyniri, soğan turşusu, BBQ sos, hardal, ketçap.</p></div>
+                <div class="price">400₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Avokado ve Yumurta</h3><p>90 gram Tam buğday lavaş, dereotlu krem peynir, yumurta, avokado ezmesi, hindi füme.</p></div>
+                <div class="price">280₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Ton Balıklı</h3><p>Ekmek çeşitleri (Ciabatta - Bagel - Focaccia - Baget), dereotlu krem peynir, mısır, göbek marul, ton balığı.</p></div>
+                <div class="price">320₺</div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-info"><h3>Izgara Hellim</h3><p>Ekmek çeşitleri (Ciabatta - Bagel - Focaccia - Baget), Pesto sos, domates, roka, ızgara hellim.</p></div>
+                <div class="price">310₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Hindi Füme</h3><p>Ekmek çeşitleri (Ciabatta - Bagel - Focaccia - Baget), dereotlu krem peynir, havuç, salatalık, hindi füme.</p></div>
+                <div class="price">310₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Kuru Domatesli</h3><p>Ekmek çeşitleri (Ciabatta - Bagel - Focaccia - Baget), Cevizli ve kekikli kuru domates, kekik, beyaz peynir, roka.</p></div>
+                <div class="price">300₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Chili-Cheese</h3><p>Ekmek çeşitleri (Ciabatta - Bagel - Focaccia - Baget), Sweet chili sos, eritilmiş cheddar, göbek marul, ızgara tavuk.</p></div>
+                <div class="price">350₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Sebzeli Kaşarlı</h3><p>Ekmek çeşitleri (Ciabatta - Bagel - Focaccia - Baget), Izgara mevsim sebzeleri, kekik, kaşar peynir.</p></div>
+                <div class="price">300₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Porsiyon Cips</h3><p>Ekmek çeşitleri (Ciabatta - Bagel - Focaccia - Baget), dereotlu krem peynir, mısır, göbek marul, ton balığı.</p></div>
+                <div class="price">320₺</div>
+            </div>
+            <div class="product-card"><h3>Porsiyon Cips</h3><div class="price">250₺</div></div>
+            <div class="product-card"><h3>Menüye İlave Cips</h3><div class="price">90₺</div></div>
+
+        </div>
+
+        <div id="salata" class="menu-section">
+            <h2 class="section-title">Salatalar</h2>
+            <div class="product-card">
+                <div class="product-info"><h3>Smash Avocado Salatası</h3><p>Avokado, beyaz peynir, ızgara domates, yumurta, turşu soğan, 2 dilim ekmek.</p></div>
+                <div class="price">320₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Narlı Roka Salatası</h3><p>Roka, nar, domates, ceviz, pancar, Parmesan peyniri.</p></div>
+                <div class="price">320₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Izgara Tavuk Salatası</h3><p>Marul, cherry domates, mısır, nohut, salata sosu, 150gr ızgara tavuk.</p></div>
+                <div class="price">380₺</div>
+            </div>
+            <div class="product-card">
+                <div class="product-info"><h3>Ton Balıklı Salata</h3><p>Marul, cherry domates, kapya biber, mısır, nohut, salata sosu, Ton balığı.</p></div>
+                <div class="price">350₺</div>
+            </div>
+        </div>
+
+        <div id="kahve-sicak" class="menu-section">
+            <h2 class="section-title">Sıcak Kahveler</h2>
+            <div class="product-card"><h3>Espresso (Single/Double)</h3><div class="price">110₺ / 130₺</div></div>
+            <div class="product-card"><h3>Americano</h3><div class="price">170₺</div></div>
+            <div class="product-card"><h3>Filtre Kahve</h3><div class="price">150₺</div></div>
+            <div class="product-card"><h3>Latte </h3><div class="price">200₺</div></div>
+            <div class="product-card"><h3>Cappuccino </h3><div class="price">170₺</div></div>
+            <div class="product-card"><h3>Mocha </h3><div class="price">230₺</div></div>
+            <div class="product-card"><h3>White Mocha </h3><div class="price">230₺</div></div>
+            <div class="product-card"><h3>Flat White </h3><div class="price">190₺</div></div>
+            <div class="product-card"><h3>Türk Kahvesi</h3><div class="price">130₺</div></div>
+            <div class="product-card"><h3>Cold Brew</h3><div class="price">240₺</div></div>
+            <div class="product-card"><h3>Espresso Orange</h3><div class="price">240₺</div></div>
+            <div class="product-card"><h3>Espresso RedBull</h3><div class="price">250₺</div></div>
+            <div class="product-card"><h3>Espresso Tonic</h3><div class="price">230₺</div></div>
+
+        </div>
+
+        <div id="icecekler" class="menu-section">
+            <h2 class="section-title">İçecekler & Tatlı</h2>
+            <div class="product-card"><h3>Su</h3><div class="price">30₺</div></div>
+            <div class="product-card"><h3>Soda</h3><div class="price">40₺</div></div>
+            <div class="product-card"><h3>Kutu içecekler</h3><div class="price">90₺</div></div>
+            <div class="product-card"><h3>RedBull</h3><div class="price">160₺</div></div>
+            <div class="product-card"><h3>Hibiscus Kiss</h3><div class="price">160₺</div></div>
+            <div class="product-card"><h3>Taze Portakal Suyu</h3><div class="price">170₺</div></div>
+            <div class="product-card"><h3>Ev Yapımı Limonata</h3><div class="price">190₺</div></div>
+            <div class="product-card"><h3>Sıcak Çikolatata</h3><div class="price">220₺</div></div>
+            <div class="product-card"><h3>Çay</h3><div class="price">50₺</div></div>
+            <div class="product-card">
+                <div class="product-info"><h3>Günün Tatlısı</h3><p>Günlük değişen ev yapımı lezzetler.</p></div>
+                <div class="price"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p><strong>One Bite</strong><br>Hafta sonu 14:00 - 20:00 arası Filtre Kahve İkramımızdır!</p>
+    </footer>
+
+    <script>
+        function showCat(id, btn) {
+            document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
+            window.scrollTo({ top: document.querySelector('.category-nav').offsetTop - 10, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
